@@ -1,0 +1,8 @@
+joomla15:
+    image: cbrun/joomla15:latest
+    links:
+        - mysqld:mysql_server
+    ports: 
+        - "80:80"
+mysqld:
+    image: cbrun/mysqld:latest
