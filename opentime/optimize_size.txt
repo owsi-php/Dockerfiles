@@ -1,0 +1,127 @@
+[cbrun@cbrun Dockerfiles]$ docker history cbrun/opentime
+IMAGE               CREATED             CREATED BY                                      SIZE
+c25dfd490694        About an hour ago   /bin/sh -c #(nop) CMD [/bin/bash /start.sh]     0 B
+77af762dff15        About an hour ago   /bin/sh -c #(nop) EXPOSE map[80/tcp:{}]         0 B
+c38ef3b12dcb        About an hour ago   /bin/sh -c chown apache:apache /var/www/html    34 B
+68ccda45fcf4        About an hour ago   /bin/sh -c #(nop) ADD file:be0eb0839899295ecc   934 B
+fa31e0da9134        3 hours ago         /bin/sh -c ln -s /data/services/web/opentime    27 B
+8970e686d690        3 hours ago         /bin/sh -c cp -r openwide/plugins/openwide /d   3.925 MB
+915418d0311b        3 hours ago         /bin/sh -c cp -r openwide/opentime/* /data/se   15.98 MB
+e1a60bd85073        3 hours ago         /bin/sh -c mkdir -p /data/services/web/openti   0 B
+d03efe0873c8        3 hours ago         /bin/sh -c svn co svn://svn.noparking.net/usr   41.69 MB
+084f1b16bd4f        3 hours ago         /bin/sh -c yum -y install wget tar gzip subve   281 MB
+6156b5c59b06        3 weeks ago         /bin/sh -c #(nop) MAINTAINER Christophe Brun    0 B
+5e1de4e67c0d        3 weeks ago         /bin/sh -c #(nop) CMD [/start.sh]               0 B
+f56e8f76e6e5        3 weeks ago         /bin/sh -c chmod -v +x /start.sh                62 B
+ee9f58ecbd5c        3 weeks ago         /bin/sh -c #(nop) ADD file:0023e254a520f3e466   62 B
+24d3e634f3b1        3 weeks ago         /bin/sh -c #(nop) ADD file:52348f4a390e061097   87 B
+085d2797a999        3 weeks ago         /bin/sh -c #(nop) EXPOSE map[80/tcp:{}]         0 B
+d86f44e988c4        3 weeks ago         /bin/sh -c echo "Apache" >> /var/www/html/ind   7 B
+71044a39919b        3 weeks ago         /bin/sh -c yum clean all                        1.696 MB
+ba17f7cea2c6        3 weeks ago         /bin/sh -c yum -y install php php-imap php-mc   58.88 MB
+65ab234a715d        3 weeks ago         /bin/sh -c yum -y install httpd supervisor      23.66 MB
+a3c80f955521        3 weeks ago         /bin/sh -c yum -y update                        226.2 MB
+088ae09b7a55        3 weeks ago         /bin/sh -c #(nop) MAINTAINER "Christophe Brun   0 B
+bfe0bb6667e4        6 weeks ago         /bin/sh -c #(nop) ADD file:017c27ec01b35a6aac   250.2 MB
+00a0c78eeb6d        10 weeks ago        /bin/sh -c #(nop) MAINTAINER Lokesh Mandvekar   0 B
+511136ea3c5a        19 months ago                                                       0 B
+
+
+e1d80bd98d45        2 minutes ago       /bin/sh -c #(nop) CMD [/bin/bash /start.sh]     0 B
+f038b181be57        2 minutes ago       /bin/sh -c #(nop) EXPOSE map[80/tcp:{}]         0 B126.5 MB
+c53e52d835ae        2 minutes ago       /bin/sh -c #(nop) ADD file:be0eb0839899295ecc   934 B
+dded22a7b4a7        3 minutes ago       /bin/sh -c svn co svn://svn.noparking.net/usr   61.6 MB
+57c7d8dff0b6        5 minutes ago       /bin/sh -c yum -y install wget tar gzip subve   126.5 MB
+6156b5c59b06        3 weeks ago         /bin/sh -c #(nop) MAINTAINER Christophe Brun    0 B
+5e1de4e67c0d        3 weeks ago         /bin/sh -c #(nop) CMD [/start.sh]               0 B
+f56e8f76e6e5        3 weeks ago         /bin/sh -c chmod -v +x /start.sh                62 B
+ee9f58ecbd5c        3 weeks ago         /bin/sh -c #(nop) ADD file:0023e254a520f3e466   62 B
+24d3e634f3b1        3 weeks ago         /bin/sh -c #(nop) ADD file:52348f4a390e061097   87 B
+085d2797a999        3 weeks ago         /bin/sh -c #(nop) EXPOSE map[80/tcp:{}]         0 B
+d86f44e988c4        3 weeks ago         /bin/sh -c echo "Apache" >> /var/www/html/ind   7 B
+71044a39919b        3 weeks ago         /bin/sh -c yum clean all                        1.696 MB
+ba17f7cea2c6        3 weeks ago         /bin/sh -c yum -y install php php-imap php-mc   58.88 MB
+65ab234a715d        3 weeks ago         /bin/sh -c yum -y install httpd supervisor      23.66 MB
+a3c80f955521        3 weeks ago         /bin/sh -c yum -y update                        226.2 MB
+088ae09b7a55        3 weeks ago         /bin/sh -c #(nop) MAINTAINER "Christophe Brun   0 B
+bfe0bb6667e4        6 weeks ago         /bin/sh -c #(nop) ADD file:017c27ec01b35a6aac   250.2 MB
+00a0c78eeb6d        10 weeks ago        /bin/sh -c #(nop) MAINTAINER Lokesh Mandvekar   0 B
+511136ea3c5a        19 months ago                                                       0 B
+
+
+
+
+
+Exemple avec mysql : optimisation du script et passage du yum install dans le 1er run et non dans le script shell : 
+Après
+[cbrun@cbrun mysql]$ docker history cbrun/mysqld
+IMAGE               CREATED              CREATED BY                                      SIZE
+7a3a344774a1        About a minute ago   /bin/sh -c #(nop) CMD [/bin/bash /start.sh]     0 B
+9aaca3db9d57        About a minute ago   /bin/sh -c #(nop) EXPOSE map[3306/tcp:{}]       0 B
+e17f535be78a        About a minute ago   /bin/sh -c chmod 755 /start.sh &&  chmod 755    115.2 MB
+02c393901c7e        2 minutes ago        /bin/sh -c #(nop) ADD file:175b95f679c8a0acf7   1.106 kB
+6bcd502a85bb        5 minutes ago        /bin/sh -c #(nop) ADD file:3312a625330026c382   61 B
+f5b6f33952ce        5 minutes ago        /bin/sh -c #(nop) ADD file:42f06d622ad30fdc5b   75 B
+778dca6b30b0        6 minutes ago        /bin/sh -c yum -y update && yum -y install co   398 MB
+088ae09b7a55        3 weeks ago          /bin/sh -c #(nop) MAINTAINER "Christophe Brun   0 B
+bfe0bb6667e4        6 weeks ago          /bin/sh -c #(nop) ADD file:017c27ec01b35a6aac   250.2 MB
+00a0c78eeb6d        10 weeks ago         /bin/sh -c #(nop) MAINTAINER Lokesh Mandvekar   0 B
+511136ea3c5a        19 months ago                                                        0 B
+
+Avant
+[cbrun@cbrun mysql]$ docker history 3da9e82d2ed6797834312e04987c1070d350bcf141a93561d99f3210baf0448d 
+IMAGE               CREATED             CREATED BY                                      SIZE
+3da9e82d2ed6        4 minutes ago       /bin/sh -c #(nop) CMD [/bin/bash /start.sh]     0 B
+71715dcbd75b        4 minutes ago       /bin/sh -c #(nop) EXPOSE map[3306/tcp:{}]       0 B
+cc5c18f7ad12        4 minutes ago       /bin/sh -c chmod 755 /start.sh &&  chmod 755    284.8 MB
+ab6035913698        6 minutes ago       /bin/sh -c #(nop) ADD file:e6919eb9c7128d63d1   1.103 kB
+6bcd502a85bb        6 minutes ago       /bin/sh -c #(nop) ADD file:3312a625330026c382   61 B
+f5b6f33952ce        6 minutes ago       /bin/sh -c #(nop) ADD file:42f06d622ad30fdc5b   75 B
+778dca6b30b0        6 minutes ago       /bin/sh -c yum -y update && yum -y install co   398 MB
+088ae09b7a55        3 weeks ago         /bin/sh -c #(nop) MAINTAINER "Christophe Brun   0 B
+bfe0bb6667e4        6 weeks ago         /bin/sh -c #(nop) ADD file:017c27ec01b35a6aac   250.2 MB
+00a0c78eeb6d        10 weeks ago        /bin/sh -c #(nop) MAINTAINER Lokesh Mandvekar   0 B
+511136ea3c5a        19 months ago                                                       0 B
+
+
+
+
+
+Cas avec httpd : optimisation des lignes yum sur une seule ligne
+Avant
+[cbrun@cbrun mysql]$ docker history chbrun/httpd
+IMAGE               CREATED             CREATED BY                                      SIZE
+8f1fbd8c84a8        7 days ago          /bin/sh -c #(nop) CMD [/start.sh]               0 B
+e44fb1418d5d        7 days ago          /bin/sh -c chmod -v +x /start.sh                62 B
+8dd1e15e8253        7 days ago          /bin/sh -c #(nop) ADD file:c5f94a244389cfa1da   62 B
+96f6180b14c9        7 days ago          /bin/sh -c #(nop) ADD file:90677b7b866aa266e0   87 B
+5f27af7596ec        7 days ago          /bin/sh -c #(nop) EXPOSE map[80/tcp:{}]         0 B
+701479e0f2fb        7 days ago          /bin/sh -c echo "Apache" >> /var/www/html/ind   7 B
+f1669d567907        7 days ago          /bin/sh -c yum clean all                        1.696 MB
+412b154452e6        7 days ago          /bin/sh -c yum -y install php php-imap php-mc   60.06 MB
+0aca6c485149        7 days ago          /bin/sh -c yum -y install httpd supervisor      24.75 MB
+4622e0cdcf27        7 days ago          /bin/sh -c yum -y update                        402.3 MB
+d66072620a80        7 days ago          /bin/sh -c #(nop) MAINTAINER "Christophe Brun   0 B
+834629358fe2        3 weeks ago         /bin/sh -c #(nop) ADD file:1314084600b39a33b9   250.2 MB
+00a0c78eeb6d        10 weeks ago        /bin/sh -c #(nop) MAINTAINER Lokesh Mandvekar   0 B
+511136ea3c5a        19 months ago                                                       0 B
+[cbrun@cbrun mysql]$ 
+[cbrun@cbrun mysql]$ 
+
+
+Après
+[cbrun@cbrun mysql]$ docker history cbrun/httpd
+IMAGE               CREATED             CREATED BY                                      SIZE
+8e2bf637b1fa        16 hours ago        /bin/sh -c #(nop) CMD [/start.sh]               0 B
+6879b173dbf6        16 hours ago        /bin/sh -c #(nop) ADD file:3caba193d0dfff7e82   87 B
+cc8c459f4e45        16 hours ago        /bin/sh -c #(nop) EXPOSE map[80/tcp:{}]         0 B
+dc307c2c13d9        16 hours ago        /bin/sh -c chmod -v +x /start.sh && echo "Apa   69 B
+39f2be03e8e3        16 hours ago        /bin/sh -c #(nop) ADD file:b7948bb628ecdcb099   62 B
+6cf364c887be        16 hours ago        /bin/sh -c yum -y update && yum -y install ht   304.4 MB
+088ae09b7a55        3 weeks ago         /bin/sh -c #(nop) MAINTAINER "Christophe Brun   0 B
+bfe0bb6667e4        6 weeks ago         /bin/sh -c #(nop) ADD file:017c27ec01b35a6aac   250.2 MB
+00a0c78eeb6d        10 weeks ago        /bin/sh -c #(nop) MAINTAINER Lokesh Mandvekar   0 B
+511136ea3c5a        19 months ago                                                       0 B
+[cbrun@cbrun mysql]$ 
+
+

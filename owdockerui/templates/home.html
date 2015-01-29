@@ -1,0 +1,32 @@
+{%extends "layout.html" %}
+{% block body %}
+    <h1>Liste des containers</h1>
+    {% if msg %}
+        <table class="sortable">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                </tr> 
+            </thead>
+            <tbody>/
+            {% for item in msg %}
+            <tr>
+                <td>{{ item['Names'][0] }}</td>
+                <td>{{item['Status']}}</td>
+                <td>
+                    <a href="info/{{item['Id']}}"><i class="icon-info-sign"></i></a>
+                    <a href="config/{{item['Id']}}"><i class="icon-wrench"></i></a>
+                    {% if 'Exited' in item['Status'] %}
+                        <a href="start/{{item['Id']}}"><i class="icon-play"></i></a>
+                    {% else %}
+                        <a href="stop/{{item['Id']}}"><i class="icon-stop"></i></a>
+                    {% endif %}
+                </td>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    {% endif %}
+{% endblock %}

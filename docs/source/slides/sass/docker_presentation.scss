@@ -1,0 +1,100 @@
+//colors
+$white: white;
+$color_cerulean: #14b6e5;
+$li_bottom: 0.7em;
+$color_gray_ow: #939393;
+
+@mixin img_center {
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+
+@mixin screenshot
+{
+    display: block;
+    width: 43%;
+    height:auto;
+    float: right;
+    position: absolute;
+    top: 240px;
+    right: -20px;
+}
+
+@mixin titre($taille) {
+    color: $color_cerulean;
+    text-align: right;
+    font-size: $taille ;
+}
+
+@mixin logo_bu {
+    position: absolute;
+    img {
+        width: 90%;
+        height: auto;
+    }
+}
+
+body {
+    background-color: $white;
+    background: None;
+}
+li {
+    list-style-image: image-url('puces.png');
+    margin-bottom: $li_bottom;
+    margin-left: 0px;
+    font-size: 0.9em;
+}
+h1 {
+    text-align: right; 
+    color: $white;
+    font-size: 1.5em;
+    height: 90px;
+    width: 100%;
+    background: image-url('bandeau.png');
+}
+div {
+    &#homepage {
+        h1 {
+            background: None;
+            @include titre(52px);
+            margin-top: 10%;
+            margin-bottom: 12%;
+        }
+        h2 {
+            @include titre(32px);
+        }
+        h3 {
+            @include titre(24px);
+        }
+        img {
+            width: 100%;
+            height: auto;
+            margin-top: 1em;
+        }
+    }
+    &#footer div#logo-footer img {
+        width: 32%;
+        height: auto;
+    }
+    &#vm_vs_container img {
+        @include img_center
+    }
+    &.warning {
+        background: none repeat scroll 0 0 #ffedcc;
+        padding: 5px;
+        p {
+            margin: 3px;
+            ligne-height: 24px;
+        }
+    }
+    &.warning:before {
+        content: " Attention";
+        color: white;
+        background: none repeat scroll 0 0 #f0b37e;
+        width: 100%;
+        display: block;
+        margin: -3px;
+        padding-left: 5px;
+    }
+}
