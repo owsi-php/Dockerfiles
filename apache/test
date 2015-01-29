@@ -1,0 +1,29 @@
+    [cbrun@cbrun ]$ docker history chbrun/httpd
+    IMAGE          CREATED             CREATED BY                        SIZE
+    8f1fbd8c84a8   7 days ago   /bin/sh -c #(nop) CMD [/start.sh]         0 B
+    e44fb1418d5d   7 days ago   /bin/sh -c chmod -v +x /start.sh         62 B
+    8dd1e15e8253   7 days ago   /bin/sh -c #(nop) ADD file:c5f9cfa...    62 B
+    96f6180b14c9   7 days ago   /bin/sh -c #(nop) ADD file:90677b7...    87 B
+    5f27af7596ec   7 days ago   /bin/sh -c #(nop) EXPOSE map[80/tc...     0 B
+    701479e0f2fb   7 days ago   /bin/sh -c echo "Apache" >> /var/w...     7 B
+    f1669d567907   7 days ago   /bin/sh -c yum clean all                1.7 MB
+    412b154452e6   7 days ago   /bin/sh -c yum -y install php php-...  60.0 MB
+    0aca6c485149   7 days ago   /bin/sh -c yum -y install httpd ...    24.7 MB
+    4622e0cdcf27   7 days ago   /bin/sh -c yum -y update              402.3 MB
+    d66072620a80   7 days ago   /bin/sh -c #(nop) MAINTAINER "Chri...     0 B
+    834629358fe2   3 weeks ago  /bin/sh -c #(nop) ADD file:1314084... 250.2 MB
+    00a0c78eeb6d  10 weeks ago  /bin/sh -c #(nop) MAINTAINER Lokes...     0 B
+    511136ea3c5a  19 months ago                                           0 B
+
+    [cbrun@cbrun ]$ docker history cbrun/httpd
+    IMAGE          CREATED             CREATED BY                        SIZE
+    8e2bf637b1fa   16 hours ago /bin/sh -c #(nop) CMD [/start.sh]         0 B
+    6879b173dbf6   16 hours ago /bin/sh -c #(nop) ADD file:3caba19...    87 B
+    cc8c459f4e45   16 hours ago /bin/sh -c #(nop) EXPOSE map[80/tc...     0 B
+    dc307c2c13d9   16 hours ago /bin/sh -c chmod -v +x /start.sh &...    69 B
+    39f2be03e8e3   16 hours ago /bin/sh -c #(nop) ADD file:b7948bb...    62 B
+    6cf364c887be   16 hours ago /bin/sh -c yum -y update && yum -y... 304.4 MB
+    088ae09b7a55    3 weeks ago /bin/sh -c #(nop) MAINTAINER "Chri...     0 B
+    bfe0bb6667e4    6 weeks ago /bin/sh -c #(nop) ADD file:017c27e... 250.2 MB
+    00a0c78eeb6d   10 weeks ago /bin/sh -c #(nop) MAINTAINER Lokes...     0 B
+    511136ea3c5a   19 months ago                                          0 B
